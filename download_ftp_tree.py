@@ -57,7 +57,7 @@ def _download_ftp_file(ftp_handle, name, dest, overwrite):
 def _mirror_ftp_dir(ftp_handle, name, overwrite, guess_by_extension):
     """ replicates a directory on an ftp server recursively """
     for item in ftp_handle.nlst(name):
-        if _is_ftp_dir(ftp_handle, item):
+        if _is_ftp_dir(ftp_handle, item, guess_by_extension):
             _mirror_ftp_dir(ftp_handle, item, overwrite, guess_by_extension)
         else:
             _download_ftp_file(ftp_handle, item, item, overwrite)
