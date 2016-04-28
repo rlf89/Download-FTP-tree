@@ -77,3 +77,17 @@ def download_ftp_tree(ftp_handle, path, destination, overwrite=False, guess_by_e
     """
     os.chdir(destination)
     _mirror_ftp_dir(ftp_handle, path, overwrite, guess_by_extension)
+    
+    
+
+# play around here
+if __name__ == "__main__":
+    import ftplib
+    
+    mysite = ""
+    username = ""
+    password = ""
+    remote_dir = ""
+    local_dir = ""
+    ftp = ftplib.FTP(mysite, username, password)
+    download_ftp_tree(ftp, remote_dir, local_dir)
