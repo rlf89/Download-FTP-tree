@@ -8,7 +8,7 @@ Example usage:
 import ftplib
 ftp = ftplib.FTP(mysite, username, password)
 download_ftp_tree(ftp, remote_dir, local_dir)
-``````
+```
 The code above will look for a directory called "remote_dir" on the ftp host, and then duplicate the
 directory and its entire contents into the "local_dir"
 """
@@ -75,8 +75,11 @@ def download_ftp_tree(ftp_handle, path, destination, overwrite=False, guess_by_e
         if this flag is set to True, it will assume any file ending with a three character extension ".???" is
         a file and not a directory. Set to False if some folders may have a "." in their names -4th position.
     """
-    os.chdir(destination)
-    _mirror_ftp_dir(ftp_handle, path, overwrite, guess_by_extension)
+    original_directory = os.getcwd()    # remember working directory before function is executed
+    os.chdir(destination)               # change working directory to ftp mirror directory
+    filelist = _mirror_ftp_dir(ftp_handle, path, overwrite, guess_by_extension, conditional)
+    os.chdir(original_directory)        # reset working directory to what it was before function exec
+    return filelist
     
     
 
