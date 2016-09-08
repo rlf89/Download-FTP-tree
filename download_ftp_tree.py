@@ -45,7 +45,7 @@ def _make_parent_dir(fpath):
 
 def _download_ftp_file(ftp_handle, name, dest, overwrite):
     """ downloads a single file from an ftp server """
-    _make_parent_dir(dest)
+    _make_parent_dir(dest.lstrip("/"))
     if not os.path.exists(dest) or overwrite is True:
         with open(dest, 'wb') as f:
             ftp_handle.retrbinary("RETR {0}".format(name), f.write)
