@@ -80,7 +80,7 @@ def download_ftp_tree(ftp_handle, path, destination, overwrite=False, guess_by_e
     """
     original_directory = os.getcwd()    # remember working directory before function is executed
     os.chdir(destination)               # change working directory to ftp mirror directory
-    filelist = _mirror_ftp_dir(ftp_handle, path, overwrite, guess_by_extension, conditional)
+    filelist = _mirror_ftp_dir(ftp_handle, path, overwrite, guess_by_extension)
     os.chdir(original_directory)        # reset working directory to what it was before function exec
     return filelist
     
