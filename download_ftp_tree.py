@@ -3,7 +3,6 @@ import os
 
 """
 Example usage:
-
 ``` python
 import ftplib
 ftp = ftplib.FTP(mysite, username, password)
@@ -50,9 +49,12 @@ def _download_ftp_file(ftp_handle, name, dest, overwrite):
     """ downloads a single file from an ftp server """
     _make_parent_dir(dest.lstrip("/"))
     if not os.path.exists(dest) or overwrite is True:
-        with open(dest, 'wb') as f:
-            ftp_handle.retrbinary("RETR {0}".format(name), f.write)
-        print("downloaded: {0}".format(dest))
+        try:
+            with open(dest, 'wb') as f:
+                ftp_handle.retrbinary("RETR {0}".format(name), f.write)
+            print("downloaded: {0}".format(dest))
+        except FileNotFoundError:
+            print("FAILED: {0}".format(dest))
     else:
         print("already exists: {0}".format(dest))
 
@@ -69,7 +71,6 @@ def _mirror_ftp_dir(ftp_handle, name, overwrite, guess_by_extension):
 def download_ftp_tree(ftp_handle, path, destination, overwrite=False, guess_by_extension=True):
     """
     Downloads an entire directory tree from an ftp server to the local destination
-
     :param ftp_handle: an authenticated ftplib.FTP instance
     :param path: the folder on the ftp server to download
     :param destination: the local directory to store the copied folder
@@ -78,22 +79,22 @@ def download_ftp_tree(ftp_handle, path, destination, overwrite=False, guess_by_e
         if this flag is set to True, it will assume any file ending with a three character extension ".???" is
         a file and not a directory. Set to False if some folders may have a "." in their names -4th position.
     """
+    path = path.lstrip("/")
     original_directory = os.getcwd()    # remember working directory before function is executed
     os.chdir(destination)               # change working directory to ftp mirror directory
-    filelist = _mirror_ftp_dir(ftp_handle, path, overwrite, guess_by_extension)
+    _mirror_ftp_dir(ftp_handle, path, overwrite, guess_by_extension)
     os.chdir(original_directory)        # reset working directory to what it was before function exec
-    return filelist
-    
-    
+
+
 
 # play around here
 if __name__ == "__main__":
     import ftplib
-    
-    mysite = ""
-    username = ""
-    password = ""
-    remote_dir = ""
-    local_dir = ""
+
+    mysite = r""
+    username = r""
+    password = r""
+    remote_dir = r""
+    local_dir = r""
     ftp = ftplib.FTP(mysite, username, password)
     download_ftp_tree(ftp, remote_dir, local_dir)
