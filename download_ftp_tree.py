@@ -20,8 +20,11 @@ def _is_ftp_dir(ftp_handle, name, guess_by_extension=True):
     # if the name has a "." in the fourth to last position, its probably a file extension
     # this is MUCH faster than trying to set every file to a working directory, and will work 99% of time.
     if guess_by_extension is True:
-        if name[-4] == '.':
+        if len(name) < 4:
             return False
+        else:
+            if name[-4] == '.':
+                return False
 
     original_cwd = ftp_handle.pwd()     # remember the current working directory
     try:
