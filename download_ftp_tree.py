@@ -2,6 +2,8 @@ import ftplib
 import os
 
 """
+MIT license: 2017 - Jwely
+
 Example usage:
 ``` python
 import ftplib
