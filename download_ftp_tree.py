@@ -39,7 +39,7 @@ def _make_parent_dir(fpath):
     dirname = os.path.dirname(fpath)
     while not os.path.exists(dirname):
         try:
-            os.mkdir(dirname)
+            os.makedirs(dirname)
             print("created {0}".format(dirname))
         except:
             _make_parent_dir(dirname)
