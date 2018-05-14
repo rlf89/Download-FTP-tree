@@ -30,6 +30,10 @@ def _is_ftp_dir(ftp_handle, name, guess_by_extension=True):
         ftp_handle.cwd(name)            # try to set directory to new name
         ftp_handle.cwd(original_cwd)    # set it back to what it was
         return True
+    
+    except ftplib.error_perm as e:
+        return False
+    
     except:
         return False
 
