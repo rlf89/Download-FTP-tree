@@ -52,7 +52,8 @@ def _make_parent_dir(fpath):
         try:
             os.makedirs(dirname)
             print("created {0}".format(dirname))
-        except OSError:
+        except OSError as e:
+            print(e)
             _make_parent_dir(dirname)
 
 
