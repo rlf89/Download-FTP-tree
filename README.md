@@ -10,7 +10,7 @@ Usage
 -------
 
 ``` python
-import ftputil
+import ftputil, os
 
 fhelpers = "ftp_helpers.py"
 
