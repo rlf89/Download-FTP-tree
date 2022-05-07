@@ -7,7 +7,6 @@ MIT License
 Copyright (c) 2022 rlf89
 Copyright (c) 2017 Jwely
 
-
 Example usage:
 
 ``` python
