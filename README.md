@@ -1,7 +1,7 @@
 # Download-FTP-tree
 Recursive FTP directory downloader with python (ftputil)
 
-Example usage:
+### Example usage:
 ``` python
 import ftputil
 
