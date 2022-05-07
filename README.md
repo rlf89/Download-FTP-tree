@@ -1,6 +1,12 @@
 # Download-FTP-tree
 Recursive FTP directory downloader with python (ftputil)
 
+Tested
+-------
+
+-   Linux
+-   Python3
+
 Usage
 -------
 
