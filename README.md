@@ -24,7 +24,7 @@ ftphandle.close()
 Credits
 -------
 
-Forked from [download_ftp_tree.py](https://gist.github.com/Jwely/ad8eb800bacef9e34dd775f9b3aad987) by Jwely (MIT license).
+Forked from [download_ftp_tree.py](https://gist.github.com/Jwely/ad8eb800bacef9e34dd775f9b3aad987) by [Jwely](https://gist.github.com/Jwely) (MIT license).
 
 License
 -------
