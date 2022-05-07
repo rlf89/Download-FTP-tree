@@ -8,7 +8,7 @@ Copyright (c) 2022 rlf89
 Copyright (c) 2017 Jwely
 
 
-Minimal Example usage:
+Example usage:
 
 ``` python
 import ftputil
